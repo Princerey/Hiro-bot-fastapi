@@ -8,7 +8,7 @@ import google.generativeai as genai
 app = FastAPI()
 
 # Set up the generative model
-genai.configure(api_key="AIzaSyC8MYwBl0KMKtY--e8ylrPWfyI6ufUdKJQ")
+genai.configure(api_key="AIzaSyBs71_G9ux0RZT8qPM7Cn2mdlSwaGk5e-M")
 generation_config = {
     "temperature": 0.9,
     "top_p": 1,
