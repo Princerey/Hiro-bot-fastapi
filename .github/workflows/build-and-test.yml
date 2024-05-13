@@ -30,12 +30,6 @@ jobs:
           login-server: ${{ secrets.AZURE_ACR_NAME }}.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - name: Azure CLI script
-        uses: azure/cli@v2
-        with:
-            azcliversion: latest
-            inlineScript: |
-              az account show
       - name: Push Docker image to ACR
         run: |
           docker push ${{ secrets.AZURE_ACR_NAME }}.azurecr.io/hiro-api:${{ github.sha }}
