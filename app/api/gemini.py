@@ -2,13 +2,17 @@ from fastapi import FastAPI, HTTPException, Form,APIRouter
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-
+import os
 import google.generativeai as genai
 
 app = FastAPI()
 
 # Set up the generative model
-genai.configure(api_key="AIzaSyBs71_G9ux0RZT8qPM7Cn2mdlSwaGk5e-M")
+api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise ValueError("API key for GEMINI is not set. Please set the GEMINI_API_KEY environment variable.")
+
+genai.configure(api_key=api_key)
 generation_config = {
     "temperature": 0.9,
     "top_p": 1,
